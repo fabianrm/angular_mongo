@@ -75,7 +75,7 @@
                   </td>
 
                   <td *ngFor="let nombre of entityNames">
-                    <div>{{ getValue(data, nombre) }}</div>
+                    <div [innerHTML]="getValue(data, nombre) | formatValueImage:nombre"></div>
                   </td>
                   <td class="text-nowrap">
                     <a data-toggle="tooltip" data-original-title="View">

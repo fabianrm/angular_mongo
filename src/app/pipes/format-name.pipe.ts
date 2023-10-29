@@ -13,9 +13,33 @@ export class FormatNamePipe implements PipeTransform {
       return 'Imagen'
     }
 
+    if (value === "brand") {
+      return 'Marca'
+    }
+
+    if (value === "availability") {
+      return 'Disponible'
+    }
+
+    if (value === "isNewArrival") {
+      return 'Lo Nuevo'
+    }
+
+    if (value === "currency") {
+      return 'Moneda'
+    }
+
+    if (value === "status") {
+      return 'Estado'
+    }
+
+    if (value === "isSpecialOffer") {
+      return 'Oferta'
+    }
+
     let newValueArray: any = value.split('_')
     //let newValue = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-    newValueArray = newValueArray.map((nombre: string) => nombre.charAt(0).toUpperCase() + value.slice(1).toLowerCase())
+    newValueArray = newValueArray.map((nombre: string) => nombre.charAt(0).toUpperCase() + nombre.slice(1).toLowerCase())
     return newValueArray.join(' ');
 
   }
