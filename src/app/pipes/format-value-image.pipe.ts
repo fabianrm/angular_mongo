@@ -9,7 +9,7 @@ export class FormatValueImagePipe implements PipeTransform {
     let newValue = value;
     if (nombre == "imageUrls") {
       const url = value[0];
-      newValue = `<img src = "${url}" width="50px" height="50px" />`
+      newValue = `<img src = "${url}"  width="50px" height="50px"  alt="" />`
     }
     return newValue;
   }

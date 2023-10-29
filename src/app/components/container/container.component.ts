@@ -14,6 +14,7 @@ export class ContainerComponent implements OnInit {
   datas: any;
   entityNames: Array<any> = [];
   searchTag: any;
+  filtrarTabla: any = '';
 
   constructor(private route: ActivatedRoute, private entityService: EntityService) {
   }

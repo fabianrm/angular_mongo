@@ -18,7 +18,7 @@
               <div class="col-lg-12">
                 <div class="input-group">
                   <input class="form-control" id="demo-input-search2" type="text" placeholder="Buscar por nombre"
-                         autocomplete="off">
+                         autocomplete="off" name="filtrarTabla" [(ngModel)]="filtrarTabla">
                 </div>
               </div>
               <!-- </form> -->
@@ -66,7 +66,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let data of datas; let index=index ">
+                <tr *ngFor="let data of datas | filtrarNombre: filtrarTabla; let index=index ">
                   <td class="col-md-1">
                     <div class="demo-checkbox">
                       <input type="checkbox" id="{{ index + 1 }}" name=""/>
