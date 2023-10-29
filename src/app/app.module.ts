@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { ContainerComponent } from './components/container/container.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormatNamePipe } from './pipes/format-name.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContainerComponent
+    ContainerComponent,
+    FormatNamePipe
   ],
   imports: [
     BrowserModule,
