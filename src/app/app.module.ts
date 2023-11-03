@@ -10,6 +10,7 @@ import {FormatNamePipe} from './pipes/format-name.pipe';
 import {FormatValueImagePipe} from './pipes/format-value-image.pipe';
 import {FiltrarNombrePipe} from './pipes/filtrar-nombre.pipe';
 import {NgxPaginationModule} from "ngx-pagination";
+import {DataAdminComponent} from './components/data-admin/data-admin.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {NgxPaginationModule} from "ngx-pagination";
     ContainerComponent,
     FormatNamePipe,
     FormatValueImagePipe,
-    FiltrarNombrePipe
+    FiltrarNombrePipe,
+    DataAdminComponent
   ],
   imports: [
     BrowserModule,
