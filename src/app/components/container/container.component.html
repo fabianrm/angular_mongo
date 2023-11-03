@@ -34,15 +34,18 @@
                 <div class="dropdown-menu">
 
                   <ul class="list-style-none">
-                    <li>
+                    <li *ngFor="let entityName of entityNamesAll; let first = first">
                       <div class="controls">
                         <label class="custom-control custom-checkbox m-l-10">
                           <input type="checkbox"
                                  class="custom-control-input"
+                                 [checked]="first || entityNames.includes(entityName)"
+                                 [disabled]="first"
+                                 (change)="setEntityNames($event, entityName)"
                                  name=""
                           >
                           <span class="custom-control-indicator"></span> <span
-                          class="custom-control-description">modelos</span>
+                          class="custom-control-description">{{ entityName | formatName}}</span>
                         </label>
                       </div>
                     </li>
@@ -66,14 +69,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let data of datas | filtrarNombre: filtrarTabla; let index=index ">
+                <tr
+                  *ngFor="let data of datas | filtrarNombre: filtrarTabla | paginate: { itemsPerPage: numRows, currentPage: page }; let index=index ">
                   <td class="col-md-1">
                     <div class="demo-checkbox">
                       <input type="checkbox" id="{{ index + 1 }}" name=""/>
                       <label for="{{ index + 1 }}">{{ index + 1 }}</label>
                     </div>
                   </td>
-
                   <td *ngFor="let nombre of entityNames">
                     <div [innerHTML]="getValue(data, nombre) | formatValueImage:nombre"></div>
                   </td>
@@ -91,6 +94,34 @@
               </table>
 
               <div class="d-flex justify-content-end">
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+
+                <pagination-template #p="paginationApi"
+                                     (pageChange)="page =$event">
+
+                  <div class="form-group">
+                    <div class="item-par-page">
+                      Pagina
+                      {{getStartIndex(p.getCurrent(), p.getLastPage()) }}
+                      - {{ getLasttIndex(p.getCurrent(), p.getLastPage())}}
+                      de {{datas?.length}}
+                      <select name="numRows" id="numRows" (change)="page = 1" [(ngModel)]="numRows">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div class="pagination-next" [class.disabled]="p.isLastPage()">
+                    <a *ngIf="!p.isLastPage()" (click)="p.next()"> > </a>
+                  </div>
+
+                </pagination-template>
+
 
               </div>
 
